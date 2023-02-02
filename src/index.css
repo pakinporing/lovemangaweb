@@ -2,8 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Mitr&family=Prompt:wght@100;200;400&display=swap');
+
 @layer base {
   html {
-    font-family: 'Prompt', sans-serif;
+    /* font-family: 'Prompt', sans-serif; */
   }
+}
+
+body {
+  background-image: url(./assets/Anime-Wallpapers-anime-38650046-1920-1080\ 1.png);
+  font-family: 'Mitr', sans-serif;
 }
