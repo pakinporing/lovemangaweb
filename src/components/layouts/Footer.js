@@ -10,13 +10,13 @@ export default function Footer() {
     <>
       <div className="flex justify-center items-center">
         <div>
-          <AiOutlineFacebook />
+          <AiOutlineFacebook className="text-[64px] text-[#FFBC90]" />
         </div>
         <div>
-          <AiOutlineInstagram />
+          <AiOutlineInstagram className="text-[64px] text-[#86AED1]" />
         </div>
         <div>
-          <AiOutlineTwitter />
+          <AiOutlineTwitter className="text-[64px] text-[#CFE555]" />
         </div>
       </div>
       <div className="flex justify-center items-center">

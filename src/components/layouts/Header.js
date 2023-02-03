@@ -1,15 +1,16 @@
 import React from 'react';
 import { BrowserRouter as Link } from 'react-router-dom';
 import { BiSearch } from 'react-icons/bi';
-import { AiOutlineStar } from 'react-icons/ai';
+import { BsStarFill } from 'react-icons/bs';
 import { TbLogin } from 'react-icons/tb';
+import LoveManga from '../../assets/LoveManga.png';
 
 export default function Header() {
   return (
     <div className="flex justify-between items-center">
       <div className="flex gap-3 items-center">
-        <div>
-          <Link>LoveManga</Link>
+        <div className="p-[12px]">
+          <img src={LoveManga} />
         </div>
         <div>
           <Link>มังงะทั้งหมด</Link>
@@ -24,12 +25,12 @@ export default function Header() {
           </div>
         </div>
 
-        <div className="flex items-center">
+        <div className="flex items-center justify-between gap-2">
           <div>
-            <AiOutlineStar className="text-[30px]" />
+            <BsStarFill className="text-[48px] text-[#F4ED7F]" />
           </div>
           <div>
-            <TbLogin className="text-[30px]" />
+            <TbLogin className="text-[48px] text-[#679A7D]" />
           </div>
         </div>
       </div>

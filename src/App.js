@@ -1,6 +1,8 @@
 import Footer from './components/layouts/Footer';
 import Header from './components/layouts/Header';
 import Login from './components/Login';
+import Profile from './components/Profile';
+import Register from './components/Register';
 
 function App() {
   return (
@@ -16,7 +18,12 @@ function App() {
       <br></br>
       <br></br>
       <br></br>
+      <Profile />
       <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <Register />
       <br></br>
       <br></br>
       <br></br>

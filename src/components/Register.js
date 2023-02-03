@@ -1,7 +1,7 @@
 import React from 'react';
 import LoveManga from '../assets/LoveManga.png';
 
-export default function Login() {
+export default function Register() {
   return (
     <>
       <div className="w-full">
@@ -19,22 +19,15 @@ export default function Login() {
               <p>รหัสผ่าน</p>
               <input type="password" className="" placeholder="Password" />
             </div>
+
+            <div className="w-full">
+              <p>ยืนยันรหัสผ่าน</p>
+              <input type="password" className="" placeholder="Password" />
+            </div>
             <br />
             <br />
             <button className="border-[2px] rounded-[30px] w-[187px] h-[57px] bg-[#FFBC90] text-[#ffffff]">
-              Log In
-            </button>
-
-            <span className="w-full">
-              อ้าว!!! ยังไม่ได้เป็นสมาชิกหรอ..........
-            </span>
-            <span>สมัครสิรออะไร</span>
-
-            <button className="border-[2px] rounded-[30px] w-[321px] h-[57px] bg-[#86AED1] text-[#ffffff]">
-              เข้าสู่ระบบด้วย Facebook
-            </button>
-            <button className="border-[2px] rounded-[30px] w-[321px] h-[57px] bg-[#FF8C94] text-[#ffffff]">
-              เข้าสู่ระบบด้วย Gmail
+              OK
             </button>
           </form>
         </div>
