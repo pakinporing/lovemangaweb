@@ -1,8 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { BiSearch } from 'react-icons/bi';
 import { BsStarFill } from 'react-icons/bs';
 import { TbLogin } from 'react-icons/tb';
+import { Navigate } from 'react-router-dom';
 import LoveManga from '../../assets/LoveManga.png';
 
 export default function Header() {
@@ -12,7 +13,7 @@ export default function Header() {
         <div className="p-[12px]">
           <img src={LoveManga} />
         </div>
-        <div>มั้งงะทั้งหมด</div>
+        <div>มังงะทั้งหมด</div>
       </div>
 
       <div className="flex gap-2 items-center">
