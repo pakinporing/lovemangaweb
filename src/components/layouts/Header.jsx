@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { BiSearch } from 'react-icons/bi';
 import { BsStarFill } from 'react-icons/bs';
 import { TbLogin } from 'react-icons/tb';
@@ -12,9 +12,7 @@ export default function Header() {
         <div className="p-[12px]">
           <img src={LoveManga} />
         </div>
-        <div>
-          <Link>มังงะทั้งหมด</Link>
-        </div>
+        <div>มั้งงะทั้งหมด</div>
       </div>
 
       <div className="flex gap-2 items-center">
