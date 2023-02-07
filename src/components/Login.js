@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import LoveManga from '../assets/LoveManga.png';
 
 export default function Login() {
+  const [open, setOpen] = useState(false);
   return (
     <>
       <div className="w-full">
@@ -28,7 +29,7 @@ export default function Login() {
             <span className="w-full">
               อ้าว!!! ยังไม่ได้เป็นสมาชิกหรอ..........
             </span>
-            <span>สมัครสิรออะไร</span>
+            <span onClick={() => setOpen(true)}>สมัครสิรออะไร</span>
 
             <button className="border-[2px] rounded-[30px] w-[321px] h-[57px] bg-[#86AED1] text-[#ffffff]">
               เข้าสู่ระบบด้วย Facebook
