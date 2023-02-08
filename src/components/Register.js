@@ -1,52 +1,40 @@
 import React, { useState } from 'react';
+import { toast } from 'react-toastify';
 import LoveManga from '../assets/LoveManga.png';
-// import { object, string, ref } from 'yup';
-import * as Joi from 'joi';
+import validateRegister from '../validators/validate-register';
+import * as authApi from '../apis/auth-api';
+import useLoading from '../hooks/useLoading';
 
 const initialInput = { email: '', password: '', confirmPassword: '' };
 
-const registerSchema = Joi.object({
-  email: Joi.string().email({ tlds: false }).required(),
-  password: Joi.string().alphanum().min(6).required().trim(),
-  confirmPassword: Joi.string().valid(Joi.ref('password')).required().trim()
-});
-
-const validateRegister = (input) => {
-  return registerSchema.validate(input, {
-    abortEarly: false
-  });
-};
-
-// const registerSchema = object({
-//   email: string().trim().required(),
-//   password: string()
-//     .matches(/^[0-9a-zA-Z]{6,}$/)
-//     .required(),
-//   confirmPassword: ref('password').required()
-// });
-
-// const validateRegister = async (input) => {
-//   try {
-//     const value = await registerSchema.validate(input, {
-//       abortEarly: false,
-//       stripUnknown: true
-//     });
-//   } catch (err) {}
-// };
-
 export default function Register() {
   const [input, setInput] = useState(initialInput);
+  const [error, setError] = useState({});
 
-  const [error, setError] = useState(initialInput);
+  const { startLoading, stopLoading } = useLoading();
 
   const handleChangInput = (e) => {
-    e.preventDefault();
     setInput({ ...input, [e.target.name]: e.target.value });
   };
 
-  const handleSubmitForm = (e) => {
-    const { value, error } = validateRegister(input);
-    console.dir(error);
+  const handleSubmitForm = async (e) => {
+    try {
+      e.preventDefault();
+
+      const result = validateRegister(input);
+      if (result) {
+        setError(result);
+      } else {
+        setError({});
+        startLoading();
+        await authApi.register(input);
+        toast.success('success register.');
+      }
+    } catch (err) {
+      toast.error(err.response?.data.message);
+    } finally {
+      stopLoading();
+    }
   };
 
   return (
@@ -70,7 +58,7 @@ export default function Register() {
                 value={input.email}
                 onChange={handleChangInput}
               />
-              <div>{error.email}</div>
+              <div className="text-[8px] text-[red]">{error.email}</div>
             </div>
 
             <div className="w-full">
@@ -83,6 +71,7 @@ export default function Register() {
                 value={input.password}
                 onChange={handleChangInput}
               />
+              <div className="text-[8px] text-[red]">{error.password}</div>
             </div>
 
             <div className="w-full">
@@ -95,6 +84,9 @@ export default function Register() {
                 value={input.confirmPassword}
                 onChange={handleChangInput}
               />
+              <div className="text-[8px] text-[red]">
+                {error.confirmPassword}
+              </div>
             </div>
             <br />
             <br />

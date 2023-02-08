@@ -20,7 +20,7 @@ export default function Header() {
         <div className="flex border-2 rounded-2xl items-center">
           <input type="text" placeholder="Search"></input>
           <div>
-            <BiSearch />
+            <BiSearch className="text-[36px]" />
           </div>
         </div>
 
