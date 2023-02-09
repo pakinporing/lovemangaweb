@@ -8,11 +8,16 @@ import RegisterPage from '../pages/RegisterPage';
 import SearchPage from '../pages/SearchPage';
 import HomePage from '../pages/HomePage';
 import FavoritePage from '../pages/FavoritePage';
+import RedirectIfAuthenticate from '../components/RedirectIfAuthenticate';
 
 const router = createBrowserRouter([
   {
     path: '/loginpage',
-    element: <LoginPage />
+    element: (
+      <RedirectIfAuthenticate>
+        <LoginPage />
+      </RedirectIfAuthenticate>
+    )
   },
   {
     path: '/allmangapage',
