@@ -10,11 +10,11 @@ import LoadingContextProvider from './contexts/LoadingContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <LoadingContextProvider>
-      <AuthContextProvider>
-        <App />
-      </AuthContextProvider>
-    </LoadingContextProvider>
-  </React.StrictMode>
+  // <React.StrictMode>
+  <LoadingContextProvider>
+    <AuthContextProvider>
+      <App />
+    </AuthContextProvider>
+  </LoadingContextProvider>
+  // </React.StrictMode>
 );

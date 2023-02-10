@@ -9,6 +9,7 @@ import SearchPage from '../pages/SearchPage';
 import HomePage from '../pages/HomePage';
 import FavoritePage from '../pages/FavoritePage';
 import RedirectIfAuthenticate from '../components/RedirectIfAuthenticate';
+import AdminPage from '../pages/AdminPage';
 
 const router = createBrowserRouter([
   {
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
   {
     path: '/searchpage',
     element: <SearchPage />
+  },
+  {
+    path: '/adminpage',
+    element: <AdminPage />
   },
   {
     path: '/',
