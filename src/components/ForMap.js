@@ -13,13 +13,13 @@ function ForMap({ name, seeAll, src }) {
           <Card src={Img} MangaName={'KKFKFKFKFKFK'} />
         </div>
         <div className="manga-pic">
-          <Card src={Img} MangaName={'HAAAAAAAAAAAAA'} />
+          <Card src={Img} MangaName={'HAAAAAAAAAAA'} />
         </div>
         <div className="manga-pic">
-          <Card />
+          <Card src={Img} MangaName={'HAAAAAAAAAAA'} />
         </div>
         <div className="manga-pic">
-          <Card />
+          <Card src={Img} MangaName={'HAAAAAAAAAAA'} />
         </div>
       </div>
       <hr></hr>

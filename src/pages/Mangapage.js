@@ -1,23 +1,34 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import ImgManga from '../components/ImgManga';
 import Footer from '../components/layouts/Footer';
 import Header from '../components/layouts/Header';
-import Img from '../assets/test.jpg';
+
 import ChapTerList from '../components/ChapTerList';
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
 
 export default function MangaPage() {
-  const manganame = 'Haikyuu!! ไฮคิว!! คู่ตบฟ้าประทาน';
-  const mangades =
-    'Haikyuu!! ไฮคิว!! คู่ตบฟ้าประทาน เรื่องราวของ ฮินาตะ โชโย เด็กหนุ่มผู้เริ่มต้นเล่นวอลเลย์บอลหลังจากที่ได้เห็น “สมอลล์ไจแอนท์” ที่กำลังแข่งขันวอลเลย์บอลอยู่ ในสมัยที่เขายังเรียนในระดับประถมศึกษา หลังจากนั้น ฮินาตะ ได้ทุ่มเทอย่างมากให้กับการเล่นวอลเลย์บอล จนเขาสามารถพาทีมโรงเรียนยูคิงาโอกะเข้าร่วมการแข่งขันวอลเลย์บอลเป็นครั้งแรก และครั้งสุดท้ายสำหรับเขาในสมัยเรียนชั้นมัธยมศึกษาตอนต้น';
-  const chapter = 15;
+  const [manga, setManga] = useState({});
 
-  const mangaid = '15';
+  const { mangaId } = useParams();
+
+  useEffect(() => {
+    const fetch = async () => {
+      const res = await axios.get(`http://localhost:8888/manga/${mangaId}`);
+      setManga(...res.data.manga);
+    };
+    fetch();
+  }, []);
 
   return (
     <div>
       <Header />
-      <ImgManga src={Img} manganame={manganame} mangades={mangades} />
-      <ChapTerList numberchapter={chapter} mangaid={mangaid} />
+      <ImgManga
+        src={manga.mangaImageUrl}
+        manganame={manga.mangaName}
+        mangades={manga.description}
+      />
+      <ChapTerList mangaChapter={manga.MangaChapters} />
       <Footer />
     </div>
   );

@@ -4,13 +4,14 @@ import LoveManga from '../assets/LoveManga.png';
 import validateRegister from '../validators/validate-register';
 import * as authApi from '../apis/auth-api';
 import useLoading from '../hooks/useLoading';
+import { useNavigate } from 'react-router-dom';
 
 const initialInput = { email: '', password: '', confirmPassword: '' };
 
 export default function Register() {
   const [input, setInput] = useState(initialInput);
   const [error, setError] = useState({});
-
+  const navigate = useNavigate();
   const { startLoading, stopLoading } = useLoading();
 
   const handleChangInput = (e) => {
@@ -29,6 +30,7 @@ export default function Register() {
         startLoading();
         await authApi.register(input);
         toast.success('success register.');
+        navigate('/loginpage');
       }
     } catch (err) {
       toast.error(err.response?.data.message);
@@ -46,7 +48,11 @@ export default function Register() {
             onSubmit={handleSubmitForm}
           >
             <div>
-              <img src={LoveManga} />
+              <img
+                src={LoveManga}
+                role="button"
+                onClick={() => navigate('/')}
+              />
             </div>
             <div className="w-full">
               <p>อีเมล</p>
@@ -90,7 +96,10 @@ export default function Register() {
             </div>
             <br />
             <br />
-            <button className="border-[2px] rounded-[30px] w-[187px] h-[57px] bg-[#FFBC90] text-[#ffffff]">
+            <button
+              className="border-[2px] rounded-[30px] w-[187px] h-[57px] bg-[#FFBC90] text-[#ffffff]"
+              role="button"
+            >
               OK
             </button>
           </form>

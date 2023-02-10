@@ -1,23 +1,35 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, useSearchParams } from 'react-router-dom';
 import Footer from '../components/layouts/Footer';
 import Header from '../components/layouts/Header';
 import Read from '../components/Read';
-import TestSrc from '../assets/content/Group5.png';
+
+import axios from 'axios';
 
 export default function ReadPage() {
   const [search] = useSearchParams();
-  console.log(search.get('chapter'));
 
-  const params = useParams();
-  console.log(params);
+  const [manga, setManga] = useState({});
 
-  const testimg = TestSrc;
+  const { mangaId } = useParams();
+
+  useEffect(() => {
+    const fetch = async () => {
+      const res = await axios.get(
+        `http://localhost:8888/manga-chapter/${mangaId}?chapter=${search.get(
+          'chapter'
+        )}`
+      );
+      setManga(res.data.foundChapter);
+      console.log(res.data);
+    };
+    fetch();
+  }, []);
 
   return (
     <div>
       <Header />
-      <Read src={testimg} />
+      <Read src={manga.url} />
       <Footer />
     </div>
   );

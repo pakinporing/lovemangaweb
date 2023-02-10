@@ -2,11 +2,12 @@ import { toast } from 'react-toastify';
 import React, { useState } from 'react';
 import LoveManga from '../assets/LoveManga.png';
 import useAuth from '../hooks/uesAuth';
+import { useNavigate } from 'react-router-dom';
 
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
+  const navigate = useNavigate();
   const { login } = useAuth();
 
   const handleSubmitForm = async (e) => {
@@ -29,7 +30,11 @@ export default function Login() {
             onSubmit={handleSubmitForm}
           >
             <div>
-              <img src={LoveManga} />
+              <img
+                src={LoveManga}
+                role="button"
+                onClick={() => navigate('/')}
+              />
             </div>
             <div className="w-full">
               <p>อีเมล</p>
@@ -57,11 +62,18 @@ export default function Login() {
             <button className="border-[2px] rounded-[30px] w-[187px] h-[57px] bg-[#FFBC90] text-[#ffffff]">
               Log In
             </button>
-
-            <span className="w-full">
-              อ้าว!!! ยังไม่ได้เป็นสมาชิกหรอ..........
-            </span>
-            <span>สมัครสิรออะไร</span>
+            <div>
+              <span className="w-full">
+                อ้าว!!! ยังไม่ได้เป็นสมาชิกหรอ..........
+              </span>
+              <span
+                role="button"
+                onClick={() => navigate('/registerpage')}
+                className="text-[#D18CAF]"
+              >
+                สมัครสิรออะไร
+              </span>
+            </div>
 
             <button className="border-[2px] rounded-[30px] w-[321px] h-[57px] bg-[#86AED1] text-[#ffffff]">
               เข้าสู่ระบบด้วย Facebook

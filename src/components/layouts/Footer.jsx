@@ -8,7 +8,7 @@ import {
 export default function Footer() {
   return (
     <>
-      <div className="flex justify-center items-center">
+      <div className="flex justify-center items-center mt-[80px]">
         <div>
           <AiOutlineFacebook className="text-[64px] text-[#FFBC90]" />
         </div>
