@@ -5,7 +5,6 @@ import img from '../assets/Allmanga.png';
 export default function AllManga({ manga }) {
   const navigate = useNavigate();
 
-  console.log(manga);
   return (
     <>
       <div className="flex flex-col items-center p-[40px]">
@@ -14,6 +13,7 @@ export default function AllManga({ manga }) {
           {manga?.map((el) => {
             return (
               <p
+                role="button"
                 onClick={() => {
                   navigate(`/mangapage/${el.id}`);
                 }}

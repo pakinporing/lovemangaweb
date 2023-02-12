@@ -1,4 +1,6 @@
 import { ToastContainer } from 'react-toastify';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 import Spinner from './components/Spinner';
 import useLoading from './hooks/useLoading';
 

@@ -1,22 +1,23 @@
 import React from 'react';
-import Penguin from '../assets/penguin-1299271_1280.webp';
 import { removeAccessToken } from '../utils/local-storage';
 import { useNavigate } from 'react-router-dom';
+import useAuth from '../hooks/uesAuth';
+import ProfileImg from './ProfileImg';
 
 export default function Profile() {
+  const { setAuthenticatedUser } = useAuth();
   const navigate = useNavigate();
 
   const handleLogout = () => {
     removeAccessToken();
-    navigate('/loginpage');
+    setAuthenticatedUser(null);
+    navigate('/');
   };
 
   return (
     <div>
       <div>
-        <div className="w-[283px] h-[283px] border-[5px] rounded-[150px] mx-auto overflow-hidden m-6">
-          <img src={Penguin} />
-        </div>
+        <ProfileImg />
       </div>
       <div className="bg-[#ffffff] w-[450px] h-[701px] rounded-[30px] mx-auto p-[20px]">
         <form className="flex flex-col gap-3 items-center">

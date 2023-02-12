@@ -6,9 +6,13 @@ import { TbLogin } from 'react-icons/tb';
 
 import LoveManga from '../../assets/LoveManga.png';
 import { useNavigate } from 'react-router-dom';
+import useAuth from '../../hooks/uesAuth';
+import ProfileImg from '../ProfileImg';
 
 export default function Header() {
   const navigate = useNavigate();
+
+  const { authenticatedUser } = useAuth();
 
   return (
     <div className="flex justify-between items-center mb-[10px]">
@@ -30,12 +34,23 @@ export default function Header() {
         </div>
 
         <div className="flex items-center justify-between gap-2">
-          <div>
-            <BsStarFill className="text-[48px] text-[#F4ED7F]" role="button" />
-          </div>
-          <div onClick={() => navigate('/loginpage')} role="button">
-            <TbLogin className="text-[48px] text-[#679A7D]" />
-          </div>
+          {authenticatedUser && (
+            <div className="flex gap-2">
+              <div role="button">
+                <BsStarFill className="text-[48px] text-[#F4ED7F]" />
+              </div>
+
+              <div onClick={() => navigate('/profilepage')} role="button">
+                <ProfileImg />
+              </div>
+            </div>
+          )}
+
+          {!authenticatedUser && (
+            <div onClick={() => navigate('/loginpage')} role="button">
+              <TbLogin className="text-[48px] text-[#679A7D]" />
+            </div>
+          )}
         </div>
       </div>
     </div>

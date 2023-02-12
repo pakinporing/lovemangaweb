@@ -11,10 +11,11 @@ export default function HomePage() {
   return (
     <div>
       <Header />
-      {/* <MangaType /> */}
+      <Slideshow />
+      <MangaType />
       {/* <MangaList /> */}
       {/* <UpManga /> */}
-      <UpChapter />
+      {/* <UpChapter /> */}
       <Footer />
     </div>
   );
