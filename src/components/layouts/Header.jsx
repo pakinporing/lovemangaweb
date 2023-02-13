@@ -35,13 +35,13 @@ export default function Header() {
 
         <div className="flex items-center justify-between gap-2">
           {authenticatedUser && (
-            <div className="flex gap-2">
+            <div className="flex gap-2 items-center">
               <div role="button">
                 <BsStarFill className="text-[48px] text-[#F4ED7F]" />
               </div>
 
               <div onClick={() => navigate('/profilepage')} role="button">
-                <ProfileImg />
+                <ProfileImg src={authenticatedUser.profileImage} size="49" />
               </div>
             </div>
           )}

@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { removeAccessToken } from '../utils/local-storage';
 import { useNavigate } from 'react-router-dom';
 import useAuth from '../hooks/uesAuth';
 import ProfileImg from './ProfileImg';
 
 export default function Profile() {
-  const { setAuthenticatedUser } = useAuth();
+  const { setAuthenticatedUser, authenticatedUser } = useAuth();
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -14,20 +14,41 @@ export default function Profile() {
     navigate('/');
   };
 
+  const [file, setFile] = useState(null);
+
+  const inputEl = useRef();
+
   return (
     <div>
       <div>
-        <ProfileImg />
+        <input
+          type="File"
+          className="hidden"
+          ref={inputEl}
+          onChange={(e) => {
+            if (e.target.files[0]) {
+              setFile(e.target.files[0]);
+            }
+          }}
+        />
+        <div onClick={() => inputEl.current.click()}>
+          <ProfileImg
+            src={
+              file ? URL.createObjectURL(file) : authenticatedUser.profileImage
+            }
+            size="283"
+          />
+        </div>
       </div>
       <div className="bg-[#ffffff] w-[450px] h-[701px] rounded-[30px] mx-auto p-[20px]">
         <form className="flex flex-col gap-3 items-center">
           <div className="flex gap-3">
-            <button
+            {/* <button
               className="border-[2px] rounded-[10px] w-[172px] h-[57px] bg-[#FF8C94] text-[#ffffff]"
               role="button"
             >
               ทั่วไป
-            </button>
+            </button> */}
             <button
               className="border-[2px] rounded-[10px] w-[172px] h-[57px] bg-[#86AED1] text-[#ffffff]"
               role="button"
@@ -63,9 +84,14 @@ export default function Profile() {
             <button
               className="border-[2px] rounded-[30px] w-[172px] h-[57px] bg-[#D8D3CD] text-[#ffffff]"
               role="button"
+              onClick={() => {
+                setFile(null);
+                inputEl.current.value = null;
+              }}
             >
               cancle
             </button>
+
             <button
               className="border-[2px] rounded-[30px] w-[172px] h-[57px] bg-[#FFBC90] text-[#ffffff]"
               role="button"

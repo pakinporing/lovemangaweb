@@ -21,25 +21,17 @@ function ForMap({ name, seeAll, src }) {
   // console.log(manga);
 
   return (
-    <div className="">
-      <div className="">
-        <div>{name}</div>
-        {seeAll && <div>ดูทั้งหมด</div>}
-      </div>
-      <div className="manga-list" role="button">
-        {manga.map((el) => {
-          return (
-            <Card
-              onClick={() => {
-                navigate(`/mangapage`);
-              }}
-              mangaImg={el.mangaImageUrl}
-              mangaName={el.mangaName}
-              key={el.id}
-            />
-          );
-        })}
-      </div>
+    <div className="flex">
+      {manga.map((el) => {
+        return (
+          <Card
+            mangaImg={el.mangaImageUrl}
+            mangaName={el.mangaName}
+            key={el.id}
+            id={el.id}
+          />
+        );
+      })}
     </div>
   );
 }

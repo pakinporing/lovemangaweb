@@ -23,34 +23,29 @@ export default function Slideshow() {
   return (
     <Slider {...settings}>
       <div>
-        <h3>
-          <img src={Img1} role="button" onClick={() => navigate('/')} />
-        </h3>
+        <div className="w-full h-full">
+          <img
+            src={Img1}
+            role="button"
+            onClick={() => navigate('/')}
+            className="object-cover"
+          />
+        </div>
       </div>
       <div>
-        <h3>
-          <img src={Img2} role="button" onClick={() => navigate('/')} />
-        </h3>
+        <img src={Img2} role="button" onClick={() => navigate('/')} />
       </div>
       <div>
-        <h3>
-          <img src={Img3} role="button" onClick={() => navigate('/')} />
-        </h3>
+        <img src={Img3} role="button" onClick={() => navigate('/')} />
       </div>
       <div>
-        <h3>
-          <img src={Img4} role="button" onClick={() => navigate('/')} />
-        </h3>
+        <img src={Img4} role="button" onClick={() => navigate('/')} />
       </div>
       <div>
-        <h3>
-          <img src={Img5} role="button" onClick={() => navigate('/')} />
-        </h3>
+        <img src={Img5} role="button" onClick={() => navigate('/')} />
       </div>
       <div>
-        <h3>
-          <img src={Img6} role="button" onClick={() => navigate('/')} />
-        </h3>
+        <img src={Img6} role="button" onClick={() => navigate('/')} />
       </div>
     </Slider>
   );
