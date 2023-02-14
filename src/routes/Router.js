@@ -10,6 +10,8 @@ import HomePage from '../pages/HomePage';
 import FavoritePage from '../pages/FavoritePage';
 import RedirectIfAuthenticate from '../components/RedirectIfAuthenticate';
 import AdminPage from '../pages/AdminPage';
+import UpMangaPage from '../pages/UpMangaPage';
+import UpChapterPage from '../pages/UpChapterPage';
 
 const router = createBrowserRouter([
   {
@@ -47,6 +49,14 @@ const router = createBrowserRouter([
   {
     path: '/adminpage',
     element: <AdminPage />
+  },
+  {
+    path: '/upmangapage',
+    element: <UpMangaPage />
+  },
+  {
+    path: '/upchapterpage/:mangaId',
+    element: <UpChapterPage />
   },
   {
     path: '/',

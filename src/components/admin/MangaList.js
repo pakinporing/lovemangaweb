@@ -1,6 +1,9 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-export default function MangaList() {
+export default function MangaList({ manga }) {
+  const navigate = useNavigate();
+
   return (
     <div className="">
       <div className="flex justify-center text-[36px]">Manga List</div>
@@ -9,11 +12,25 @@ export default function MangaList() {
           <button
             className=" border-[2px] rounded-[10px] w-[172px] h-[57px] bg-[#86AED1] text-[#ffffff]"
             role="button"
+            onClick={() => {
+              navigate(`/upmangapage/`);
+            }}
           >
             เพิ่มมังงะ
           </button>
           <div>
-            <p>testttt</p>
+            {manga?.map((el) => {
+              return (
+                <p
+                  role="button"
+                  onClick={() => {
+                    navigate(`/upchapterpage/${el.id}`);
+                  }}
+                >
+                  {el.mangaName}
+                </p>
+              );
+            })}
           </div>
         </div>
       </div>

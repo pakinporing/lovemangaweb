@@ -12,8 +12,12 @@ export default function HomePage() {
   return (
     <div>
       <Header />
+
       <Slideshow />
+      <br />
+      <br />
       <ForMap />
+
       {/* <MangaList /> */}
       {/* <UpManga /> */}
       {/* <UpChapter /> */}

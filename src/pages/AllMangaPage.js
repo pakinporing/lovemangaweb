@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import AllManga from '../components/AllManga';
 import Footer from '../components/layouts/Footer';
 import Header from '../components/layouts/Header';
+import Slideshow from '../components/Slideshow';
 
 export default function AllMangaPage() {
   const [manga, setManga] = useState([]);
@@ -19,6 +20,9 @@ export default function AllMangaPage() {
   return (
     <div>
       <Header />
+      <Slideshow />
+      <br />
+      <br />
       <AllManga manga={manga} />
       <Footer />
     </div>
