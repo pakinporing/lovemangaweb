@@ -28,7 +28,7 @@ export default function Profile() {
     await axios.patch('http://localhost:8888/users', formData);
     stopLoading();
   };
-
+  console.log(authenticatedUser);
   return (
     <div>
       <div>
@@ -54,19 +54,15 @@ export default function Profile() {
       <div className="bg-[#ffffff] w-[450px] h-[701px] rounded-[30px] mx-auto p-[20px]">
         <form className="flex flex-col gap-3 items-center">
           <div className="flex gap-3">
-            {/* <button
-              className="border-[2px] rounded-[10px] w-[172px] h-[57px] bg-[#FF8C94] text-[#ffffff]"
-              role="button"
-            >
-              ทั่วไป
-            </button> */}
-            <button
-              onClick={() => navigate('/adminpage')}
-              className="border-[2px] rounded-[10px] w-[172px] h-[57px] bg-[#86AED1] text-[#ffffff]"
-              role="button"
-            >
-              สิทธิสำหรับAdmin
-            </button>
+            {authenticatedUser.role == 'ADMIN' && (
+              <button
+                onClick={() => navigate('/adminpage')}
+                className="border-[2px] rounded-[10px] w-[172px] h-[57px] bg-[#86AED1] text-[#ffffff]"
+                role="button"
+              >
+                สิทธิสำหรับAdmin
+              </button>
+            )}
           </div>
 
           <div className="w-full">

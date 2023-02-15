@@ -4,7 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 export default function Read({ src }) {
   const { mangaId } = useParams();
   const navigate = useNavigate();
-  console.log(mangaId);
+
   return (
     <div>
       <div className="flex justify-center">
