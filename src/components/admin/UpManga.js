@@ -1,21 +1,34 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import useLoading from '../../hooks/useLoading';
+import { useNavigate, useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 export default function UpManga() {
   const { startLoading, stopLoading } = useLoading();
   const [file, setFile] = useState(null);
   const [mangaName, setMangaName] = useState('');
   const [des, setDes] = useState('');
+  const navigate = useNavigate();
+  const { mangaId } = useParams();
 
-  const handleClickSave = async () => {
-    startLoading();
-    const formData = new FormData();
-    formData.append('mangaImageUrl', file);
-    formData.append('mangaName', mangaName);
-    formData.append('description', des);
-    await axios.post('http://localhost:8888/manga', formData);
-    stopLoading();
+  const handleClickSave = async (e) => {
+    try {
+      e.preventDefault();
+      startLoading();
+      const formData = new FormData();
+      formData.append('mangaImageUrl', file);
+      formData.append('mangaName', mangaName);
+      formData.append('description', des);
+      await axios.post('http://localhost:8888/manga', formData);
+      stopLoading();
+      toast.success('success login');
+      navigate(`/adminpage`);
+    } catch (err) {
+      console.log(err);
+      toast.error(err.response?.data.message);
+      stopLoading();
+    }
   };
 
   return (
@@ -47,12 +60,13 @@ export default function UpManga() {
           <div className="w-full">
             <p>คำอธิบาย</p>
             <textarea
+              className="resize-none"
               value={des}
               onChange={(e) => setDes(e.target.value)}
               id="w3review"
               name="w3review"
               rows="4"
-              cols="50"
+              cols="35"
             ></textarea>
           </div>
 

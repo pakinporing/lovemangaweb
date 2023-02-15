@@ -18,9 +18,6 @@ export default function HomePage() {
       <br />
       <ForMap />
 
-      {/* <MangaList /> */}
-      {/* <UpManga /> */}
-      {/* <UpChapter /> */}
       <Footer />
     </div>
   );

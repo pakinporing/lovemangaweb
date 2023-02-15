@@ -2,12 +2,9 @@ import Card from './Card';
 
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 
 function ForMap({ name, seeAll, src }) {
   const [manga, setManga] = useState([]);
-
-  const navigate = useNavigate();
 
   useEffect(() => {
     const fetch = async () => {
@@ -21,7 +18,7 @@ function ForMap({ name, seeAll, src }) {
   // console.log(manga);
 
   return (
-    <div className="flex">
+    <div className="flex justify-evenly">
       {manga.map((el) => {
         return (
           <Card

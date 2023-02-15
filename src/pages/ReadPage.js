@@ -21,7 +21,6 @@ export default function ReadPage() {
         )}`
       );
       setManga(res.data.foundChapter);
-      console.log(res.data);
     };
     fetch();
   }, []);

@@ -24,7 +24,7 @@ export default function MangaList({ manga }) {
                 <p
                   role="button"
                   onClick={() => {
-                    navigate(`/upchapterpage/${el.id}`);
+                    navigate(`/centerupmangapage/${el.id}`);
                   }}
                 >
                   {el.mangaName}
