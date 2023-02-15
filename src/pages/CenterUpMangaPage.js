@@ -55,7 +55,10 @@ export default function CenterUpManga() {
         <br />
         <br />
         <div className="flex items-center justify-center">
-          <button className="border-[2px] rounded-[30px] w-[187px] h-[57px] bg-[#86AED1] text-[#ffffff]">
+          <button
+            className="border-[2px] rounded-[30px] w-[187px] h-[57px] bg-[#86AED1] text-[#ffffff]"
+            onClick={() => navigate(`/upchapterpage/${mangaId}`)}
+          >
             เพิ่มตอน
           </button>
         </div>

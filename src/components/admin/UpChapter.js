@@ -1,26 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 export default function UpChapter() {
+  const [file, setFile] = useState(null);
+  const [chapter, setChapter] = useState('');
+
   return (
     <div>
       <div>
         <div className="w-[389px] h-[262px] border-[5px] rounded-[5px] mx-auto overflow-hidden m-6">
-          <img />
+          <input
+            type="file"
+            onChange={(e) => {
+              if (e.target.files[0]) {
+                setFile(e.target.files[0]);
+              }
+            }}
+          />
         </div>
       </div>
       <div className="bg-[#ffffff] w-[450px] h-[701px] rounded-[30px] mx-auto p-[20px]">
         <form className="flex flex-col gap-3 items-center">
           <div className="w-full">
-            <p>ชื่อมังงะ</p>
-            <input type="text" className="" placeholder="ชื่อมังงะ" />
-          </div>
-
-          <div className="w-full">
-            <p>ตอนที่</p>
+            <p>เล่มที่</p>
             <input
               type="text"
-              className=""
               placeholder="รบกวนกรอกเป็นตัวเลขเท่านั้นนะ"
+              value={chapter}
+              onChange={(e) => setChapter(e.target.value)}
             />
           </div>
 
