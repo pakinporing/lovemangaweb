@@ -28,7 +28,7 @@ export default function Profile() {
     await axios.patch('http://localhost:8888/users', formData);
     stopLoading();
   };
-  console.log(authenticatedUser);
+
   return (
     <div>
       <div>
