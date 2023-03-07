@@ -18,7 +18,7 @@ function ForMap({ name, seeAll, src }) {
   // console.log(manga);
 
   return (
-    <div className="flex justify-evenly">
+    <div className="flex justify-evenly flex-wrap">
       {manga.map((el) => {
         return (
           <Card

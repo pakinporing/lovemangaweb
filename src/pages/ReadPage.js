@@ -15,12 +15,17 @@ export default function ReadPage() {
 
   useEffect(() => {
     const fetch = async () => {
-      const res = await axios.get(
-        `http://localhost:8888/manga-chapter/${mangaId}?chapter=${search.get(
-          'chapter'
-        )}`
-      );
-      setManga(res.data.foundChapter);
+      try {
+        const res = await axios.get(
+          `http://localhost:8888/manga-chapter/${mangaId}?chapter=${search.get(
+            'chapter'
+          )}`
+        );
+
+        setManga(res.data.foundChapter);
+      } catch (error) {
+        console.log(error);
+      }
     };
     fetch();
   }, []);

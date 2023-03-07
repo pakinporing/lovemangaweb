@@ -1,9 +1,39 @@
 import React, { useState } from 'react';
+import useLoading from '../../hooks/useLoading';
+import axios from 'axios';
+
+import { useNavigate, useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 export default function UpChapter() {
   const [file, setFile] = useState(null);
   const [chapter, setChapter] = useState('');
+  const { startLoading, stopLoading } = useLoading();
+  const navigate = useNavigate();
+  const { mangaId } = useParams();
 
+  const handleClickSave = async (e) => {
+    try {
+      e.preventDefault();
+      startLoading();
+      const formData = new FormData();
+      formData.append('url', file);
+      formData.append('chapter', chapter);
+
+      await axios.post(
+        `http://localhost:8888/manga-chapter/${mangaId}`,
+        formData
+      );
+
+      toast.success('success postChapter');
+      navigate(`/centerupmangapage/${mangaId}`);
+    } catch (err) {
+      console.log(err);
+      toast.error(err.response?.data.message);
+    } finally {
+      stopLoading();
+    }
+  };
   return (
     <div>
       <div>
@@ -49,6 +79,7 @@ export default function UpChapter() {
             <button
               className="border-[2px] rounded-[30px] w-[172px] h-[57px] bg-[#FFBC90] text-[#ffffff]"
               role="button"
+              onClick={handleClickSave}
             >
               save
             </button>

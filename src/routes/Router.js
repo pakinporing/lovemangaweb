@@ -13,6 +13,7 @@ import AdminPage from '../pages/AdminPage';
 import UpMangaPage from '../pages/UpMangaPage';
 import UpChapterPage from '../pages/UpChapterPage';
 import CenterUpMangaPage from '../pages/CenterUpMangaPage';
+import AdminAuthenticate from '../components/AdminAuthenticate';
 
 const router = createBrowserRouter([
   {
@@ -49,24 +50,41 @@ const router = createBrowserRouter([
   },
   {
     path: '/adminpage',
-    element: <AdminPage />
+    element: (
+      <AdminAuthenticate>
+        <AdminPage />
+      </AdminAuthenticate>
+    )
   },
   {
     path: '/upmangapage',
-    element: <UpMangaPage />
+    element: (
+      <AdminAuthenticate>
+        <UpMangaPage />
+      </AdminAuthenticate>
+    )
   },
   {
     path: '/centerupmangapage/:mangaId',
-    element: <CenterUpMangaPage />
+    element: (
+      <AdminAuthenticate>
+        <CenterUpMangaPage />
+      </AdminAuthenticate>
+    )
   },
   {
     path: '/upchapterpage/:mangaId',
-    element: <UpChapterPage />
+    element: (
+      <AdminAuthenticate>
+        <UpChapterPage />
+      </AdminAuthenticate>
+    )
   },
   {
     path: '/',
     element: <HomePage />
   },
+  { path: '/favoritpage', element: <FavoritePage /> },
   { path: '/favoritpage', element: <FavoritePage /> }
 ]);
 

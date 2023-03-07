@@ -1,7 +1,7 @@
 import { toast } from 'react-toastify';
 import React, { useState } from 'react';
 import LoveManga from '../assets/LoveManga.png';
-import useAuth from '../hooks/uesAuth';
+import useAuth from '../hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
 
 export default function Login() {

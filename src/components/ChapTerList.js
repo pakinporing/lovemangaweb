@@ -14,7 +14,7 @@ export default function ChapTerList({ mangaChapter }) {
               navigate(`/read/${el.mangaId}?chapter=${el.id}`);
             }}
           >
-            ตอนที่{el.chapter}
+            เล่มที่{el.chapter}
           </div>
         );
       })}

@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function ImgManga({ src, manganame, mangades }) {
   return (
-    <div className="w-[100%] flex flex-col items-center">
+    <div className="w-[100%] flex flex-col items-center ">
       <img className="h-[741px] w-[471px] rounded-[30px]" src={src} />
 
       <div>

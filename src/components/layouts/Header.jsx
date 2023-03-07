@@ -6,7 +6,7 @@ import { TbLogin } from 'react-icons/tb';
 
 import LoveManga from '../../assets/LoveManga.png';
 import { useNavigate } from 'react-router-dom';
-import useAuth from '../../hooks/uesAuth';
+import useAuth from '../../hooks/useAuth';
 import ProfileImg from '../ProfileImg';
 
 export default function Header() {

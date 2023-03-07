@@ -21,12 +21,13 @@ export default function UpManga() {
       formData.append('mangaName', mangaName);
       formData.append('description', des);
       await axios.post('http://localhost:8888/manga', formData);
-      stopLoading();
-      toast.success('success login');
+
+      toast.success('success postManga');
       navigate(`/adminpage`);
     } catch (err) {
       console.log(err);
       toast.error(err.response?.data.message);
+    } finally {
       stopLoading();
     }
   };

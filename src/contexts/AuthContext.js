@@ -16,15 +16,15 @@ export default function AuthContextProvider({ children }) {
     getAccessToken() ? true : null
   );
 
+  const fetchAuthUser = async () => {
+    try {
+      const res = await axios.get('http://localhost:8888/auth/me');
+      setAuthenticatedUser(res.data.user);
+    } catch (err) {
+      removeAccessToken();
+    }
+  };
   useEffect(() => {
-    const fetchAuthUser = async () => {
-      try {
-        const res = await axios.get('http://localhost:8888/auth/me');
-        setAuthenticatedUser(res.data.user);
-      } catch (err) {
-        removeAccessToken();
-      }
-    };
     if (getAccessToken()) {
       fetchAuthUser();
     }
@@ -38,7 +38,7 @@ export default function AuthContextProvider({ children }) {
 
   return (
     <AuthContext.Provider
-      value={{ authenticatedUser, login, setAuthenticatedUser }}
+      value={{ authenticatedUser, login, setAuthenticatedUser, fetchAuthUser }}
     >
       {children}
     </AuthContext.Provider>

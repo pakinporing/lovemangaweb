@@ -1,14 +1,15 @@
 import React, { useRef, useState } from 'react';
 import { removeAccessToken } from '../utils/local-storage';
 import { useNavigate } from 'react-router-dom';
-import useAuth from '../hooks/uesAuth';
+import useAuth from '../hooks/useAuth';
 import ProfileImg from './ProfileImg';
 import axios from 'axios';
 import useLoading from '../hooks/useLoading';
+import { toast } from 'react-toastify';
 
 export default function Profile() {
   const { startLoading, stopLoading } = useLoading();
-  const { setAuthenticatedUser, authenticatedUser } = useAuth();
+  const { setAuthenticatedUser, authenticatedUser, fetchAuthUser } = useAuth();
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -21,14 +22,24 @@ export default function Profile() {
 
   const inputEl = useRef();
 
-  const handleClickSave = async () => {
-    startLoading();
-    const formData = new FormData();
-    formData.append('profileImage', file);
-    await axios.patch('http://localhost:8888/users', formData);
-    stopLoading();
+  const handleClickSave = async (e) => {
+    try {
+      e.preventDefault();
+      startLoading();
+      const formData = new FormData();
+      formData.append('profileImage', file);
+      await axios.patch('http://localhost:8888/users', formData);
+
+      toast.success('success upImg');
+      fetchAuthUser();
+    } catch (err) {
+      console.log(err);
+      toast.error(err.response?.data.message);
+    } finally {
+      stopLoading();
+    }
   };
-  console.log(authenticatedUser);
+
   return (
     <div>
       <div>
@@ -42,13 +53,17 @@ export default function Profile() {
             }
           }}
         />
-        <div onClick={() => inputEl.current.click()}>
-          <ProfileImg
-            src={
-              file ? URL.createObjectURL(file) : authenticatedUser.profileImage
-            }
-            size="283"
-          />
+        <div className=" px-[450px]  ">
+          <div onClick={() => inputEl.current.click()} className="">
+            <ProfileImg
+              src={
+                file
+                  ? URL.createObjectURL(file)
+                  : authenticatedUser.profileImage
+              }
+              size="283"
+            />
+          </div>
         </div>
       </div>
       <div className="bg-[#ffffff] w-[450px] h-[701px] rounded-[30px] mx-auto p-[20px]">

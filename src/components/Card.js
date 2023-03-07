@@ -6,14 +6,14 @@ export default function Card({ mangaImg, mangaName, id }) {
 
   return (
     <div
-      className=" w-[220px] h-[309px]  mx-auto m-[10px] "
+      className=" w-[220px] h-[309px]  mx-auto m-[10px] mb-[30px] "
       role="button"
       onClick={() => {
         navigate(`/mangapage/${id}`);
       }}
     >
-      <div className="overflow-hidden rounded-[10px] w-[220px] h-[309px]">
-        <img src={mangaImg} />
+      <div className="overflow-hidden rounded-[8px] w-[220px] h-[309px] ">
+        <img src={mangaImg} className="" />
       </div>
       <div className="">{mangaName}</div>
     </div>
