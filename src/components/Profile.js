@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { removeAccessToken } from '../utils/local-storage';
 import { useNavigate } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
@@ -11,6 +11,10 @@ export default function Profile() {
   const { startLoading, stopLoading } = useLoading();
   const { setAuthenticatedUser, authenticatedUser, fetchAuthUser } = useAuth();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    fetchAuthUser();
+  }, []);
 
   const handleLogout = () => {
     removeAccessToken();
@@ -33,7 +37,7 @@ export default function Profile() {
       toast.success('success upImg');
       fetchAuthUser();
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       toast.error(err.response?.data.message);
     } finally {
       stopLoading();

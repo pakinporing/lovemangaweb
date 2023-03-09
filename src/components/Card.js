@@ -12,7 +12,7 @@ export default function Card({ mangaImg, mangaName, id }) {
         navigate(`/mangapage/${id}`);
       }}
     >
-      <div className="overflow-hidden rounded-[8px] w-[220px] h-[309px] ">
+      <div className="overflow-hidden rounded-[8px] w-[220px] h-[309px] hover:scale-90">
         <img src={mangaImg} className="" />
       </div>
       <div className="">{mangaName}</div>

@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import ChapTerList from '../components/ChapTerList';
 import ImgManga from '../components/ImgManga';
 import { useNavigate } from 'react-router-dom';
+import Header from '../components/layouts/Header';
 
 export default function CenterUpManga() {
   const [manga, setManga] = useState({});
@@ -36,6 +37,7 @@ export default function CenterUpManga() {
     <>
       {' '}
       <div>
+        <Header />
         <br />
         <br />
         <br />
