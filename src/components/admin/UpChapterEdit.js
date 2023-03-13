@@ -1,29 +1,39 @@
-import axios from 'axios';
 import React, { useState } from 'react';
 import useLoading from '../../hooks/useLoading';
-import { useNavigate, useParams } from 'react-router-dom';
+import axios from 'axios';
+
+import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-export default function UpManga() {
-  const { startLoading, stopLoading } = useLoading();
+export default function UpChapter() {
   const [file, setFile] = useState(null);
-  const [mangaName, setMangaName] = useState('');
-  const [des, setDes] = useState('');
+  const [chapter, setChapter] = useState('');
+  const { startLoading, stopLoading } = useLoading();
   const navigate = useNavigate();
   const { mangaId } = useParams();
+  const [search] = useSearchParams();
+
+  // console.log('55555555');
+  // console.log(search.get('chapter'));
+  // console.log('55555555');
 
   const handleClickSave = async (e) => {
     try {
       e.preventDefault();
       startLoading();
       const formData = new FormData();
-      formData.append('mangaImageUrl', file);
-      formData.append('mangaName', mangaName);
-      formData.append('description', des);
-      await axios.post('http://localhost:8888/manga', formData);
+      formData.append('url', file);
+      formData.append('chapter', chapter);
 
-      toast.success('success postManga');
-      navigate(`/adminpage`);
+      await axios.patch(
+        `http://localhost:8888/manga-chapter/${mangaId}?chapter=${search.get(
+          'chapter'
+        )}`,
+        formData
+      );
+
+      toast.success('success patchhhhChapter');
+      navigate(`/centerupmangapage/${mangaId}`);
     } catch (err) {
       console.log(err);
       toast.error(err.response?.data.message);
@@ -31,7 +41,6 @@ export default function UpManga() {
       stopLoading();
     }
   };
-
   return (
     <div>
       <div>
@@ -49,26 +58,13 @@ export default function UpManga() {
       <div className="bg-[#ffffff] w-[450px] h-[701px] rounded-[30px] mx-auto p-[20px]">
         <form className="flex flex-col gap-3 items-center">
           <div className="w-full">
-            <p>ชื่อมังงะ</p>
+            <p>เล่มที่</p>
             <input
               type="text"
-              placeholder="ชื่อมังงะ"
-              value={mangaName}
-              onChange={(e) => setMangaName(e.target.value)}
+              placeholder="รบกวนกรอกเป็นตัวเลขเท่านั้นนะ"
+              value={chapter}
+              onChange={(e) => setChapter(e.target.value)}
             />
-          </div>
-
-          <div className="w-full">
-            <p>คำอธิบาย</p>
-            <textarea
-              className="resize-none"
-              defaultValue={des}
-              onChange={(e) => setDes(e.target.value)}
-              id="w3review"
-              name="w3review"
-              rows="4"
-              cols="35"
-            ></textarea>
           </div>
 
           <br />

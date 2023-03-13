@@ -2,8 +2,8 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import ChapTerList from '../components/ChapTerList';
-import ImgManga from '../components/ImgManga';
+import ChapTerListAdmin from '../components/admin/ChapTerListAdmin';
+import ImgMangaAdmin from '../components/admin/ImgMangaAdmin';
 import { useNavigate } from 'react-router-dom';
 import Header from '../components/layouts/Header';
 
@@ -41,11 +41,12 @@ export default function CenterUpManga() {
         <br />
         <br />
         <br />
-        <ImgManga
+        <ImgMangaAdmin
           src={manga.mangaImageUrl}
           manganame={manga.mangaName}
           mangades={manga.description}
         />
+
         <div className="flex items-center justify-center">
           <button
             className="border-[2px] rounded-[30px] w-[187px] h-[57px] bg-[#ff6600ee] text-[#ffffff]"
@@ -64,7 +65,7 @@ export default function CenterUpManga() {
             เพิ่มตอน
           </button>
         </div>
-        <ChapTerList mangaChapter={manga.MangaChapters} />
+        <ChapTerListAdmin mangaChapter={manga.MangaChapters} />
       </div>
     </>
   );
